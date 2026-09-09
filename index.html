@@ -1,0 +1,2169 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>靜宜吃什麼？PU Food Lucky Draw | 靜宜大學周邊美食抽籤</title>
+  <meta name="description" content="專為靜宜大學學生打造的美食抽籤指南！收錄北勢東路、英才路與國王商圈早午晚人氣店家，附帶吃過紀錄與智慧避雷抽籤。" />
+  
+  <!-- Google Fonts: Outfit & Noto Sans TC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Outfit:wght@500;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #FF5E3A;
+      --primary-hover: #E04826;
+      --primary-light: #FFF0EB;
+      --secondary: #FFAA00;
+      --secondary-light: #FFF8E7;
+      --accent: #10B981;
+      --accent-light: #ECFDF5;
+      --bg-cream: #FDFBF7;
+      --surface: #FFFFFF;
+      --surface-border: #F1E9DA;
+      --text-main: #2D241E;
+      --text-muted: #7E7267;
+      --text-light: #A89C90;
+      --shadow-sm: 0 4px 12px rgba(255, 94, 58, 0.08);
+      --shadow-md: 0 10px 30px rgba(255, 94, 58, 0.12);
+      --shadow-lg: 0 20px 40px rgba(45, 36, 30, 0.16);
+      --radius-sm: 12px;
+      --radius-md: 20px;
+      --radius-lg: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Outfit', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-cream);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255, 170, 0, 0.07) 0%, transparent 25%),
+        radial-gradient(circle at 90% 80%, rgba(255, 94, 58, 0.08) 0%, transparent 30%);
+      background-attachment: fixed;
+    }
+
+    /* 頂部導覽 Header */
+    header {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 2px solid var(--surface-border);
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.03);
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      box-shadow: 0 6px 16px rgba(255, 94, 58, 0.3);
+      animation: pulseGlow 3s infinite alternate;
+    }
+
+    .brand-title {
+      font-size: 1.3rem;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: var(--text-main);
+    }
+
+    .brand-title span {
+      color: var(--primary);
+    }
+
+    .brand-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 3px 8px;
+      border-radius: 999px;
+      margin-left: 6px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .stats-pill {
+      font-size: 0.85rem;
+      font-weight: 700;
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      padding: 8px 16px;
+      border-radius: 999px;
+      box-shadow: var(--shadow-sm);
+      color: var(--text-muted);
+    }
+
+    .stats-pill b {
+      color: var(--primary);
+      font-family: 'Outfit';
+    }
+
+    /* 吃過紀錄按鈕 */
+    .btn-history-trigger {
+      background: var(--surface);
+      border: 1.5px solid var(--surface-border);
+      color: var(--text-main);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s;
+    }
+
+    .btn-history-trigger:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-1px);
+    }
+
+    .history-badge {
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.72rem;
+      padding: 2px 7px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-family: 'Outfit';
+    }
+
+    /* 主視覺 Hero & 抽籤互動區 */
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 30px 20px 60px;
+    }
+
+    .hero-section {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #FFF4E5;
+      color: #D97706;
+      border: 1px solid #FDE68A;
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.25;
+      margin-bottom: 12px;
+      letter-spacing: -1px;
+    }
+
+    .hero-title .highlight {
+      background: linear-gradient(120deg, var(--primary) 0%, var(--secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 620px;
+      margin: 0 auto 28px;
+      line-height: 1.6;
+    }
+
+    /* 時段過濾按鈕群組 */
+    .meal-filter-wrap {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: var(--surface);
+      border: 2px solid var(--surface-border);
+      color: var(--text-muted);
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .filter-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .filter-btn.active {
+      background: linear-gradient(135deg, var(--primary) 0%, #FF7F50 100%);
+      color: #FFFFFF;
+      border-color: transparent;
+      box-shadow: 0 8px 24px rgba(255, 94, 58, 0.35);
+      transform: translateY(-2px);
+    }
+
+    /* 抽籤籤筒互動舞台 */
+    .lottery-stage {
+      background: linear-gradient(180deg, #FFFFFF 0%, #FFFDF9 100%);
+      border: 2px solid var(--surface-border);
+      border-radius: var(--radius-lg);
+      padding: 36px 20px 30px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 45px;
+    }
+
+    .lottery-stage::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 50%, var(--secondary) 100%);
+    }
+
+    /* 籤筒本體視覺 */
+    .cylinder-container {
+      position: relative;
+      width: 140px;
+      height: 180px;
+      margin: 10px auto 22px;
+      cursor: pointer;
+      perspective: 1000px;
+    }
+
+    .cylinder-sticks-preview {
+      position: absolute;
+      top: 5px;
+      left: 20px;
+      right: 20px;
+      height: 70px;
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+      z-index: 1;
+      transition: transform 0.3s;
+    }
+
+    .mini-stick {
+      width: 10px;
+      height: 60px;
+      background: linear-gradient(180deg, #D4A373 0%, #FAEDCD 100%);
+      border: 1px solid #BC6C25;
+      border-radius: 4px 4px 0 0;
+      position: relative;
+      transform-origin: bottom center;
+    }
+
+    .mini-stick:nth-child(1) { height: 65px; transform: rotate(-10deg); }
+    .mini-stick:nth-child(2) { height: 75px; transform: rotate(-3deg); background: linear-gradient(180deg, #FF6B4A 0%, #FAEDCD 70%); }
+    .mini-stick:nth-child(3) { height: 80px; transform: rotate(4deg); }
+    .mini-stick:nth-child(4) { height: 68px; transform: rotate(12deg); }
+
+    .cylinder-body {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 140px;
+      background: linear-gradient(135deg, #B85B14 0%, #D47A22 50%, #8C4008 100%);
+      border-radius: 12px 12px 24px 24px;
+      border: 3px solid #733206;
+      box-shadow: 
+        inset 0 10px 15px rgba(255, 255, 255, 0.25),
+        inset 0 -10px 20px rgba(0, 0, 0, 0.4),
+        0 14px 30px rgba(184, 91, 20, 0.35);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .cylinder-badge {
+      background: #FAEDCD;
+      border: 2px solid #BC6C25;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-weight: 900;
+      font-size: 1.1rem;
+      color: #733206;
+      letter-spacing: 2px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .cylinder-sub {
+      font-size: 0.7rem;
+      color: #FFE6B0;
+      margin-top: 6px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    /* 飛出的紙籤 */
+    .flying-stick {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      margin-left: -14px;
+      width: 28px;
+      height: 120px;
+      background: linear-gradient(180deg, #FF5E3A 0%, #FFF3B0 30%, #FFE8D6 100%);
+      border: 2px solid #BC6C25;
+      border-radius: 6px;
+      box-shadow: 0 8px 25px rgba(255, 94, 58, 0.6);
+      z-index: 10;
+      opacity: 0;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      writing-mode: vertical-rl;
+      font-size: 0.75rem;
+      font-weight: 900;
+      color: #733206;
+      letter-spacing: 2px;
+    }
+
+    @keyframes cylinderShake {
+      0% { transform: rotate(0deg) translateY(0); }
+      15% { transform: rotate(-14deg) translateY(-8px); }
+      30% { transform: rotate(14deg) translateY(0); }
+      45% { transform: rotate(-12deg) translateY(-6px); }
+      60% { transform: rotate(12deg) translateY(0); }
+      75% { transform: rotate(-8deg) translateY(-3px); }
+      90% { transform: rotate(6deg) translateY(0); }
+      100% { transform: rotate(0deg) translateY(0); }
+    }
+
+    .is-shaking {
+      animation: cylinderShake 0.8s ease-in-out infinite;
+    }
+
+    @keyframes stickFlyOut {
+      0% {
+        opacity: 1;
+        transform: translateY(0) scale(0.9) rotate(0deg);
+      }
+      50% {
+        opacity: 1;
+        transform: translateY(-160px) scale(1.3) rotate(8deg);
+      }
+      80% {
+        opacity: 1;
+        transform: translateY(-240px) scale(1.7) rotate(-5deg);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-300px) scale(2.2) rotate(0deg);
+      }
+    }
+
+    .is-flying {
+      animation: stickFlyOut 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+
+    /* 抽籤大按鈕 */
+    .draw-trigger-btn {
+      background: linear-gradient(135deg, var(--primary) 0%, #FF8A3D 100%);
+      color: #FFFFFF;
+      font-size: 1.25rem;
+      font-weight: 900;
+      padding: 16px 48px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(255, 94, 58, 0.4);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+    }
+
+    .draw-trigger-btn:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 16px 36px rgba(255, 94, 58, 0.5);
+    }
+
+    .draw-trigger-btn:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    /* 智慧避開設定開關 */
+    .smart-filter-row {
+      margin-top: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s;
+    }
+
+    .smart-filter-row:hover {
+      background: var(--bg-cream);
+    }
+
+    .smart-filter-row input {
+      accent-color: var(--primary);
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    .draw-tip {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-top: 10px;
+      font-weight: 500;
+    }
+
+    /* 抽中展開的籤詩彈窗 Modal */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(45, 36, 30, 0.65);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+
+    .modal-backdrop.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .fortune-card {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 500px;
+      border: 3px solid var(--primary);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+      position: relative;
+      overflow: hidden;
+      transform: scale(0.6) rotateX(30deg) translateY(60px);
+      opacity: 0;
+      transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .modal-backdrop.show .fortune-card {
+      transform: scale(1) rotateX(0deg) translateY(0);
+      opacity: 1;
+    }
+
+    .fortune-header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: #FFFFFF;
+      padding: 24px 20px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .fortune-stamp {
+      display: inline-block;
+      background: #FFFFFF;
+      color: var(--primary);
+      font-weight: 900;
+      font-size: 1rem;
+      padding: 6px 18px;
+      border-radius: 999px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+    }
+
+    .fortune-saying {
+      font-size: 0.95rem;
+      color: #FFF9E6;
+      font-weight: 500;
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      background: rgba(255, 255, 255, 0.3);
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      color: #FFFFFF;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .modal-close-btn:hover {
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .fortune-body {
+      padding: 24px;
+    }
+
+    .store-badge-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .badge-pill {
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .badge-time { background: var(--primary-light); color: var(--primary); }
+    .badge-cat { background: var(--secondary-light); color: #B45309; }
+    .badge-price { background: #ECFDF5; color: #047857; }
+
+    .fortune-store-name {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--text-main);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .detail-item-box {
+      background: var(--bg-cream);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      border: 1px solid var(--surface-border);
+    }
+
+    .detail-item-icon {
+      font-size: 1.25rem;
+      line-height: 1.2;
+    }
+
+    .detail-item-label {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      font-weight: 700;
+      margin-bottom: 2px;
+      text-transform: uppercase;
+    }
+
+    .detail-item-val {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    /* 彈窗按鈕動作列 */
+    .modal-primary-action {
+      margin-top: 18px;
+    }
+
+    .btn-record-eat {
+      width: 100%;
+      background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+      color: #FFFFFF;
+      padding: 14px;
+      border-radius: var(--radius-sm);
+      border: none;
+      font-size: 1.05rem;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 8px 20px rgba(16, 185, 129, 0.35);
+      transition: all 0.25s;
+    }
+
+    .btn-record-eat:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(16, 185, 129, 0.45);
+    }
+
+    .action-button-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .btn-nav-map {
+      background: var(--surface);
+      border: 2px solid var(--surface-border);
+      color: var(--text-main);
+      padding: 12px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .btn-nav-map:hover {
+      border-color: #10B981;
+      color: #059669;
+    }
+
+    .btn-redraw {
+      background: var(--surface);
+      border: 2px solid var(--surface-border);
+      color: var(--text-muted);
+      padding: 12px;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .btn-redraw:hover {
+      background: var(--bg-cream);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* 下方美食探索列表區 (Browse List) */
+    .section-header-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .search-input-wrap {
+      position: relative;
+      min-width: 280px;
+    }
+
+    .search-input {
+      width: 100%;
+      background: var(--surface);
+      border: 1.5px solid var(--surface-border);
+      padding: 10px 16px 10px 40px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      color: var(--text-main);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(255, 94, 58, 0.12);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-light);
+      pointer-events: none;
+      font-size: 0.9rem;
+    }
+
+    /* 店家卡片網格 (Responsive Grid) */
+    .store-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .store-card {
+      background: var(--surface);
+      border: 1.5px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .store-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(255, 94, 58, 0.4);
+    }
+
+    .store-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+
+    .store-name {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .store-loc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .signature-box {
+      background: var(--primary-light);
+      border-left: 3px solid var(--primary);
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      margin-bottom: 16px;
+      color: #9C331E;
+      font-weight: 700;
+    }
+
+    .store-card-footer {
+      border-top: 1px dashed var(--surface-border);
+      padding-top: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .price-text {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: #047857;
+    }
+
+    .card-footer-btns {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-quick-eat {
+      background: var(--accent-light);
+      border: 1px solid #A7F3D0;
+      color: #047857;
+      padding: 6px 11px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s;
+    }
+
+    .btn-quick-eat:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-card-map {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      color: var(--primary);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s;
+    }
+
+    .btn-card-map:hover {
+      background: var(--primary);
+      color: #FFFFFF;
+      border-color: var(--primary);
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-muted);
+    }
+
+    .empty-state-icon {
+      font-size: 3rem;
+      margin-bottom: 12px;
+    }
+
+    /* 吃過歷史紀錄 Drawer / Modal */
+    .history-card {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 520px;
+      max-height: 85vh;
+      border: 2px solid var(--surface-border);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transform: translateY(20px);
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .modal-backdrop.show .history-card {
+      transform: translateY(0);
+    }
+
+    .history-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--surface-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--surface);
+    }
+
+    .history-title {
+      font-size: 1.25rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .history-body {
+      padding: 20px 24px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .history-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .history-item {
+      background: var(--bg-cream);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      transition: background 0.2s;
+    }
+
+    .history-item:hover {
+      background: #FFF4E5;
+    }
+
+    .history-item-left {
+      flex: 1;
+    }
+
+    .history-item-store {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .history-item-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .history-item-delete {
+      background: none;
+      border: none;
+      color: var(--text-light);
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 4px;
+      border-radius: 4px;
+      transition: color 0.2s;
+    }
+
+    .history-item-delete:hover {
+      color: #EF4444;
+    }
+
+    .history-footer {
+      padding: 16px 24px;
+      border-top: 1px solid var(--surface-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--surface);
+    }
+
+    .btn-clear-history {
+      background: none;
+      border: 1px solid #FECACA;
+      color: #DC2626;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-clear-history:hover {
+      background: #FEE2E2;
+    }
+
+    /* Toast 通知 */
+    .toast-msg {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(45, 36, 30, 0.92);
+      color: #FFFFFF;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      z-index: 3000;
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      pointer-events: none;
+    }
+
+    .toast-msg.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* 頁尾 Footer */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--surface-border);
+      padding: 30px 20px;
+      text-align: center;
+      margin-top: 40px;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    .footer-note {
+      margin-top: 6px;
+      font-size: 0.78rem;
+      color: var(--text-light);
+    }
+
+    /* Confetti Canvas */
+    #confettiCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2000;
+    }
+
+    @keyframes pulseGlow {
+      0% { transform: scale(1); filter: drop-shadow(0 4px 10px rgba(255, 94, 58, 0.3)); }
+      100% { transform: scale(1.05); filter: drop-shadow(0 6px 16px rgba(255, 94, 58, 0.5)); }
+    }
+
+    @media (max-width: 640px) {
+      .hero-title { font-size: 1.85rem; }
+      .filter-btn { padding: 10px 18px; font-size: 0.88rem; }
+      .draw-trigger-btn { font-size: 1.1rem; padding: 14px 36px; }
+      .store-grid { grid-template-columns: 1fr; }
+      .action-button-group { grid-template-columns: 1fr; }
+      .search-input-wrap { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 頂部導覽列 -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand-logo" id="logoReload">
+        <div class="brand-icon">🥢</div>
+        <div>
+          <div class="brand-title">靜宜<span>吃什麼？</span><span class="brand-badge">PU FOOD</span></div>
+        </div>
+      </a>
+      <div class="nav-actions">
+        <button class="btn-history-trigger" id="btnOpenHistory" title="查看最近吃過的足跡">
+          <span>🕒</span> 吃過紀錄 <span class="history-badge" id="historyCountBadge">0</span>
+        </button>
+        <div class="stats-pill">
+          已收錄 <b id="totalStoresCount">0</b> 間北勢東路商圈美食
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 標題區域 -->
+    <section class="hero-section">
+      <div class="hero-tag">
+        <span>✨</span> 專為靜宜大學學生打造的覓食救星
+      </div>
+      <h1 class="hero-title">
+        今天下課 <span class="highlight">吃什麼神籤</span>
+      </h1>
+      <p class="hero-desc">
+        不知道要吃哪間？選好時段、搖動籤筒，讓幸運竹籤替你飛出今日必吃好料！支援智慧避開最近吃過店家。
+      </p>
+
+      <!-- 早中晚時段篩選鈕 -->
+      <div class="meal-filter-wrap" role="tablist">
+        <button class="filter-btn active" data-time="all">
+          <span>🍽️</span> 全部時段
+        </button>
+        <button class="filter-btn" data-time="breakfast">
+          <span>🍳</span> 早餐時段
+        </button>
+        <button class="filter-btn" data-time="lunch">
+          <span>🍱</span> 午餐便當
+        </button>
+        <button class="filter-btn" data-time="dinner">
+          <span>🌙</span> 晚餐 / 宵夜
+        </button>
+      </div>
+    </section>
+
+    <!-- 抽籤互動舞台 -->
+    <section class="lottery-stage">
+      <div class="cylinder-container" id="cylinderBox" title="點擊籤筒立即抽籤！">
+        <div class="cylinder-sticks-preview">
+          <div class="mini-stick"></div>
+          <div class="mini-stick"></div>
+          <div class="mini-stick"></div>
+          <div class="mini-stick"></div>
+        </div>
+        <div class="cylinder-body">
+          <div class="cylinder-badge">神籤</div>
+          <div class="cylinder-sub">PU FOOD</div>
+        </div>
+        <div class="flying-stick" id="flyingStick">
+          大吉幸運籤
+        </div>
+      </div>
+
+      <!-- 抽籤大按鈕 -->
+      <button class="draw-trigger-btn" id="btnDrawFortune">
+        <span>🎲</span> 抽出今日美食
+      </button>
+
+      <!-- 避開最近吃過開關 -->
+      <label class="smart-filter-row" title="開啟後，籤池會自動避開最近 3 次吃過的店家">
+        <input type="checkbox" id="chkAvoidRecent" checked />
+        <span>🔄 抽籤時避開最近 3 次吃過的店家（換換口味！）</span>
+      </label>
+
+      <div class="draw-tip">
+        目前籤池候選：<span id="currentPoolCount">0</span> 間店家
+      </div>
+    </section>
+
+    <!-- 店家瀏覽卡片網格 -->
+    <section>
+      <div class="section-header-wrap">
+        <div class="section-title">
+          <span>📍</span> 靜宜校園周邊精選名單
+        </div>
+        <div class="search-input-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" class="search-input" placeholder="搜尋店名、餐點、招牌或路段..." />
+        </div>
+      </div>
+
+      <div class="store-grid" id="storeGrid">
+        <!-- 店家卡片由 JavaScript 動態生成 -->
+      </div>
+    </section>
+  </main>
+
+  <!-- 抽中美食籤詩彈窗 (展開卡片) -->
+  <div class="modal-backdrop" id="fortuneModal">
+    <div class="fortune-card">
+      <div class="fortune-header">
+        <button class="modal-close-btn" id="modalCloseBtn">&times;</button>
+        <div class="fortune-stamp" id="modalLuckStamp">✨ 今日大吉 · 命中注定</div>
+        <div class="fortune-saying" id="modalLuckQuote">下課肚子餓？命運指定你吃這味！</div>
+      </div>
+      <div class="fortune-body">
+        <div class="store-badge-row">
+          <span class="badge-pill badge-time" id="modalTimeBadge">午餐時段</span>
+          <span class="badge-pill badge-cat" id="modalCategoryBadge">精緻便當</span>
+          <span class="badge-pill badge-price" id="modalPriceBadge">百元有找</span>
+        </div>
+        <h2 class="fortune-store-name" id="modalStoreName">店家名稱</h2>
+
+        <div class="detail-item-box">
+          <div class="detail-item-icon">⭐</div>
+          <div>
+            <div class="detail-item-label">學生力推招牌必點</div>
+            <div class="detail-item-val" id="modalSignature">招牌餐點名稱</div>
+          </div>
+        </div>
+
+        <div class="detail-item-box">
+          <div class="detail-item-icon">📍</div>
+          <div>
+            <div class="detail-item-label">地理位置與距離</div>
+            <div class="detail-item-val" id="modalLocation">北勢東路 · 距校門步行約 4 分鐘</div>
+          </div>
+        </div>
+
+        <div class="detail-item-box">
+          <div class="detail-item-icon">⏰</div>
+          <div>
+            <div class="detail-item-label">營業時段與均消</div>
+            <div class="detail-item-val" id="modalHoursPrice">均消 $80-120 · 營業時間依現場為準</div>
+          </div>
+        </div>
+
+        <!-- 記錄吃過按鈕 -->
+        <div class="modal-primary-action">
+          <button class="btn-record-eat" id="btnRecordEatModal">
+            <span>🥢</span> 就決定吃這家！（記下今日足跡）
+          </button>
+        </div>
+
+        <div class="action-button-group">
+          <a href="#" target="_blank" rel="noopener noreferrer" class="btn-nav-map" id="modalMapLink">
+            <span>🗺️</span> Google 導航
+          </a>
+          <button class="btn-redraw" id="modalRedrawBtn">
+            <span>🔄</span> 不滿意？再抽
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 最近吃過紀錄 Modal -->
+  <div class="modal-backdrop" id="historyModal">
+    <div class="history-card">
+      <div class="history-header">
+        <div class="history-title">
+          <span>🕒</span> 最近吃過紀錄
+        </div>
+        <button class="modal-close-btn" id="historyCloseBtn" style="color: var(--text-main); background: none;">&times;</button>
+      </div>
+      <div class="history-body" id="historyListContainer">
+        <!-- 吃過清單動態生成 -->
+      </div>
+      <div class="history-footer">
+        <button class="btn-clear-history" id="btnClearHistory">清空所有紀錄</button>
+        <button class="filter-btn" id="historyDoneBtn" style="padding: 6px 16px; font-size: 0.85rem;">完成</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 吐司提示訊息 -->
+  <div class="toast-msg" id="toastMsg">
+    <span>🎉</span> <span id="toastText">已記錄到吃過清單！</span>
+  </div>
+
+  <!-- 彩帶畫布 -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- 頁尾宣告 -->
+  <footer>
+    <div>🥢 <b>靜宜大學美食互動指南</b> · Providence University Food Picker</div>
+    <div class="footer-note">收錄北勢東路、英才路、國王商圈共 30 間真實在地名店 · 單一檔案純前端實作</div>
+  </footer>
+
+  <script>
+    /* ============================================================
+       1. 靜宜大學周邊（北勢東路、英才路、晉文路、國王商圈）真實美食資料庫 (30 間精選)
+       ============================================================ */
+    const FOOD_DATABASE = [
+      // ================= 早餐時段 (Breakfast) =================
+      {
+        id: 1,
+        name: "山頂囝仔 手工爆汁湯包 (原發財車)",
+        meal: "breakfast",
+        category: "手工現擀湯包",
+        priceRange: "$65 - $95",
+        priceLevel: "$",
+        location: "沙鹿區北勢東路 · 距校門步行約 4 分鐘",
+        signature: "現包爆汁鮮肉小籠湯包、特製辣椒醬油、古早味豆漿",
+        hours: "06:00 - 13:00 (週日公休)",
+        mapQuery: "山頂囝仔 湯包 靜宜"
+      },
+      {
+        id: 2,
+        name: "小小迷路 (森林系早午餐)",
+        meal: "breakfast",
+        category: "精緻早午餐/鬆餅",
+        priceRange: "$120 - $220",
+        priceLevel: "$$",
+        location: "沙鹿區北勢東路巷弄 · 步行約 6 分鐘",
+        signature: "熱鐵鍋舒芙蕾鬆餅、迷路大拼盤、手工手作奶酪",
+        hours: "09:30 - 16:30",
+        mapQuery: "小小迷路 沙鹿"
+      },
+      {
+        id: 3,
+        name: "富賦號-手作食堂",
+        meal: "breakfast",
+        category: "手作牽絲起司餅",
+        priceRange: "$55 - $110",
+        priceLevel: "$",
+        location: "沙鹿區北勢東路 · 步行約 5 分鐘",
+        signature: "爆漿牽絲手工起司餅、古早味脆皮蛋餅、雙層起司豬排",
+        hours: "06:30 - 13:30",
+        mapQuery: "富賦號 手作食堂"
+      },
+      {
+        id: 4,
+        name: "八兩早餐 (靜宜老字號)",
+        meal: "breakfast",
+        category: "特色中西早點",
+        priceRange: "$50 - $95",
+        priceLevel: "$",
+        location: "沙鹿區北勢東路 · 步行約 4 分鐘",
+        signature: "招牌煎豬排鐵板油麵、特製里肌蛋吐司、研磨咖啡",
+        hours: "05:30 - 13:00",
+        mapQuery: "八兩早餐 靜宜"
+      },
+      {
+        id: 5,
+        name: "古早味傳統手工粉漿蛋餅",
+        meal: "breakfast",
+        category: "傳統厚切粉漿",
+        priceRange: "$35 - $65",
+        priceLevel: "$",
+        location: "沙鹿區北勢東路近英才路口 · 步行 3 分鐘",
+        signature: "雙蛋厚切粉漿蛋餅、特製手工辣菜脯、古早味紅茶",
+        hours: "06:00 - 11:30 (售完為止)",
+        mapQuery: "北勢東路 手工蛋餅"
+      },
+      {
+        id: 6,
+        name: "傑客漢堡 (靜宜店)",
+        meal: "breakfast",
+        category: "西式平價早午餐",
+        priceRange: "$50 - $90",
+        priceLevel: "$",
+        location: "沙鹿區北勢東路 · 距校門步行 5 分鐘",
+        signature: "咔啦雞腿大漢堡、黑胡椒鐵板麵加蛋、現炸雞塊",
+        hours: "06:00 - 13:30",
+        mapQuery: "傑客漢堡 靜宜"
+      },
+      {
+        id: 7,
+        name: "A-Bao 阿寶晨食館 (英才店)",
+        meal: "breakfast",
+        category: "人氣晨食館",
+        priceRange: "$45 - $85",
+        priceLevel: "$",
+        location: "沙鹿區英才路 · 距校門步行 4 分鐘",
+        signature: "特酥起司烤肉蛋餅、綠茶豆漿、烤肉法式吐司",
+        hours: "05:30 - 13:00",
+        mapQuery: "阿寶晨食館 英才路"
+      },
+      {
+        id: 8,
+        name: "早安美芝城 靜宜概念店",
+        meal: "breakfast",
+        category: "概念概念店早午餐",
+        priceRange: "$60 - $120",
+        priceLevel: "$$",
+        location: "沙鹿區北勢東路 · 步行 6 分鐘",
+        signature: "里肌豬排蛋可頌、美式脆薯拼盤、牧場鮮奶茶",
+        hours: "06:00 - 13:30",
+        mapQuery: "早安美芝城 靜宜概念店"
+      },
+      {
+        id: 9,
+        name: "弘爺漢堡 靜宜晉文店",
+        meal: "breakfast",
+        category: "連鎖熱門早餐",
+        priceRange: "$50 - $95",
+        priceLevel: "$",
+        location: "沙鹿區晉文路 · 步行 3 分鐘",
+        signature: "招牌雙層牛肉堡、香酥蘿蔔糕、港式熱奶茶",
+        hours: "05:30 - 13:00",
+        mapQuery: "弘爺漢堡 晉文路"
+      },
+
+      // ================= 午餐時段 (Lunch) =================
+      {
+        id: 10,
+        name: "江蘇牛肉麵 (靜宜商圈老名店)",
+        meal: "lunch",
+        category: "傳統老字號麵食",
+        priceRange: "$100 - $180",
+        priceLevel: "$$",
+        location: "沙鹿區北勢東路 · 步行約 5 分鐘",
+        signature: "紅燒半筋半肉牛肉麵、手工刀削麵、老滷豆干海帶拼盤",
+        hours: "11:00 - 14:30, 16:30 - 20:30",
+        mapQuery: "江蘇牛肉麵 沙鹿 北勢東路"
+      },
+      {
+        id: 11,
+        name: "紫屋 韓式平價石鍋料理",
+        meal: "lunch",
+        category: "韓式石鍋拌飯",
+        priceRange: "$90 - $145",
+        priceLevel: "$",
+        location: "沙鹿區北勢東路 · 步行約 6 分鐘",
+        signature: "脆皮鍋巴豬肉石鍋拌飯、韓式部隊個人鍋、辣炒年糕",
+        hours: "11:00 - 14:00, 17:00 - 20:30",
+        mapQuery: "紫屋 韓式 靜宜"
+      },
+      {
+        id: 12,
+        name: "碗美麵舖 (沙鹿人氣麵食)",
+        meal: "lunch",
+        category: "創意大份量麵食",
+        priceRange: "$75 - $125",
+        priceLevel: "$",
+        location: "沙鹿區北勢東路 · 步行約 5 分鐘",
+        signature: "沙茶活力豬拉麵、鮮蝦大餛飩乾拌麵、特製涼拌皮蛋",
+        hours: "11:00 - 14:00, 17:00 - 20:30",
+        mapQuery: "碗美麵舖 沙鹿"
+      },
+      {
+        id: 13,
+        name: "宜鄉排骨麵",
+        meal: "lunch",
+        category: "排骨酥麵/魯肉飯",
+        priceRange: "$75 - $110",
+        priceLevel: "$",
+        location: "沙鹿區北勢東路 · 步行 5 分鐘",
+        signature: "香濃排骨酥麵、古早味魯肉飯、特製麻香辣椒醬",
+        hours: "11:00 - 20:30",
+        mapQuery: "宜鄉排骨麵 北勢東路"
+      },
+      {
+        id: 14,
+        name: "喜豐香燒臘便當",
+        meal: "lunch",
+        category: "廣式港味燒臘",
+        priceRange: "$95 - $135",
+        priceLevel: "$$",
+        location: "沙鹿區北勢東路 · 步行 6 分鐘",
+        signature: "招牌三寶飯、化皮脆皮燒肉、特製蔥油免費附湯",
+        hours: "10:30 - 14:00, 16:30 - 20:00",
+        mapQuery: "喜豐香 燒臘 北勢東路"
+      },
+      {
+        id: 15,
+        name: "泰麻吉 泰式料理小館",
+        meal: "lunch",
+        category: "南洋泰味定食",
+        priceRange: "$110 - $160",
+        priceLevel: "$$",
+        location: "沙鹿區北勢東路 · 步行 7 分鐘",
+        signature: "正統打拋豬肉飯、泰式酸辣椒麻雞套餐、手標泰奶",
+        hours: "11:00 - 14:00, 17:00 - 21:00",
+        mapQuery: "泰麻吉 泰式料理 靜宜"
+      },
+      {
+        id: 16,
+        name: "巧味鴨肉飯 / 當歸鴨麵線",
+        meal: "lunch",
+        category: "滋補當歸鴨小吃",
+        priceRange: "$65 - $100",
+        priceLevel: "$",
+        location: "沙鹿區北勢東路 · 步行 4 分鐘",
+        signature: "去骨當歸鴨肉麵線、油蔥鴨肉飯、鮮甜下水湯",
+        hours: "11:00 - 21:00",
+        mapQuery: "巧味鴨肉飯 靜宜"
+      },
+      {
+        id: 17,
+        name: "豚將日本拉麵 (英才店)",
+        meal: "lunch",
+        category: "平價無限續麵拉麵",
+        priceRange: "$85 - $140",
+        priceLevel: "$",
+        location: "沙鹿區英才路 · 步行 5 分鐘",
+        signature: "特濃特製豚骨拉麵、地獄辛口豚骨拉麵 (平日內用無限續麵)",
+        hours: "11:00 - 14:00, 17:00 - 21:00",
+        mapQuery: "豚將日本拉麵 沙鹿"
+      },
+      {
+        id: 18,
+        name: "覓·炙燒肉丼 (靜宜店)",
+        meal: "lunch",
+        category: "炭火炙燒丼飯",
+        priceRange: "$120 - $185",
+        priceLevel: "$$",
+        location: "沙鹿區北勢東路 · 步行 6 分鐘",
+        signature: "炙燒牛五花丼、無敵盛合肉肉丼、熱味噌湯免費續",
+        hours: "11:30 - 14:00, 17:00 - 21:00",
+        mapQuery: "炙燒肉丼 靜宜 北勢東路"
+      },
+
+      // ================= 晚餐 / 宵夜時段 (Dinner / Late Night) =================
+      {
+        id: 19,
+        name: "控肉詠 (北勢東路深夜食堂)",
+        meal: "dinner",
+        category: "深夜肉燥/控肉飯",
+        priceRange: "$70 - $130",
+        priceLevel: "$",
+        location: "沙鹿區北勢東路 · 步行約 5 分鐘",
+        signature: "銷魂控肉飯、蒸蛋滷肉雙拼飯、東石鮮蚵肉燥蓋飯",
+        hours: "17:00 - 01:30 (宵夜專賣)",
+        mapQuery: "控肉詠 沙鹿"
+      },
+      {
+        id: 20,
+        name: "鹽琢深夜食堂",
+        meal: "dinner",
+        category: "日式居酒屋宵夜熱炒",
+        priceRange: "$150 - $320",
+        priceLevel: "$$",
+        location: "沙鹿區北勢東路 · 步行約 7 分鐘",
+        signature: "明太子炒泡麵、炭火明太子雞肉串、香檸烤鯖魚",
+        hours: "17:30 - 02:00",
+        mapQuery: "鹽琢深夜食堂"
+      },
+      {
+        id: 21,
+        name: "酌鳥串串 (日式串烤)",
+        meal: "dinner",
+        category: "深夜日式串燒",
+        priceRange: "$100 - $240",
+        priceLevel: "$$",
+        location: "沙鹿區北勢東路 · 步行約 6 分鐘",
+        signature: "醬烤牛肋條串、脆皮烤雞皮、煉乳香烤日式麻糬",
+        hours: "18:00 - 01:00",
+        mapQuery: "酌鳥串串 靜宜"
+      },
+      {
+        id: 22,
+        name: "惡魔島厚切炸雞 (靜宜總店)",
+        meal: "dinner",
+        category: "厚切爆汁炸雞",
+        priceRange: "$75 - $145",
+        priceLevel: "$",
+        location: "沙鹿區北勢東路 · 步行 6 分鐘",
+        signature: "爆汁脆皮厚切大雞排、甘梅地瓜條、泰式檸香雞翅",
+        hours: "15:30 - 00:30",
+        mapQuery: "惡魔島炸雞 靜宜"
+      },
+      {
+        id: 23,
+        name: "潮味決·湯滷專門店 (靜宜店)",
+        meal: "dinner",
+        category: "質感湯滷味",
+        priceRange: "$95 - $165",
+        priceLevel: "$$",
+        location: "沙鹿區北勢東路 · 步行 5 分鐘",
+        signature: "麻辣豆腐鴨血煲、豚骨白湯滷、蒜焦香乾拌公仔麵",
+        hours: "16:00 - 23:00",
+        mapQuery: "潮味決 靜宜"
+      },
+      {
+        id: 24,
+        name: "絕品石頭火鍋",
+        meal: "dinner",
+        category: "爆炒個人石頭鍋",
+        priceRange: "$240 - $390",
+        priceLevel: "$$$",
+        location: "沙鹿區北勢東路 · 步行 8 分鐘",
+        signature: "現炒蒜頭蛤蜊烏骨雞鍋、雪花牛五花、冰品冷飲無限享用",
+        hours: "11:30 - 23:00",
+        mapQuery: "絕品石頭火鍋 靜宜"
+      },
+      {
+        id: 25,
+        name: "滿大碗滷味 (靜宜店)",
+        meal: "dinner",
+        category: "炒炸滷辣四吃滷味",
+        priceRange: "$80 - $150",
+        priceLevel: "$$",
+        location: "沙鹿區北勢東路 · 步行 5 分鐘",
+        signature: "九層塔爆香炒滷味、酥炸大肥腸、四川麻辣燙冬粉",
+        hours: "17:00 - 01:00",
+        mapQuery: "滿大碗 靜宜"
+      },
+      {
+        id: 26,
+        name: "御青方 麻辣臭豆腐鴨血",
+        meal: "dinner",
+        category: "麻辣燙豆腐煲",
+        priceRange: "$85 - $135",
+        priceLevel: "$",
+        location: "沙鹿區北勢東路 · 步行 6 分鐘",
+        signature: "招牌麻辣臭豆腐煲、入味鴨血細粉、酥炸金黃脆皮臭豆腐",
+        hours: "16:30 - 23:30",
+        mapQuery: "御青方 臭豆腐 靜宜"
+      },
+      {
+        id: 27,
+        name: "三味糖餅 (靜宜人氣韓式點心)",
+        meal: "dinner",
+        category: "韓式現煎糖餅",
+        priceRange: "$65 - $120",
+        priceLevel: "$",
+        location: "沙鹿區北勢東路 · 步行 6 分鐘",
+        signature: "黑糖肉桂堅果糖餅、香草冰淇淋糖餅、韓式辣炒年糕",
+        hours: "14:00 - 21:30 (週一公休)",
+        mapQuery: "三味糖餅 沙鹿"
+      },
+      {
+        id: 28,
+        name: "統元豆花 (靜宜店)",
+        meal: "dinner",
+        category: "古早味冰品甜湯",
+        priceRange: "$45 - $75",
+        priceLevel: "$",
+        location: "沙鹿區北勢東路560號 · 步行 5 分鐘",
+        signature: "竹炭養生黑豆花、招牌三色布丁豆花、仙草奶凍芋圓",
+        hours: "12:00 - 23:00",
+        mapQuery: "統元豆花 靜宜店"
+      },
+      {
+        id: 29,
+        name: "得正 Oolong Tea Project (靜宜北勢東門市)",
+        meal: "dinner",
+        category: "焙烏龍人氣手搖",
+        priceRange: "$35 - $70",
+        priceLevel: "$",
+        location: "沙鹿區北勢東路 · 步行 4 分鐘",
+        signature: "焙烏龍奶茶加芝士奶蓋、檸檬春烏龍、黃金珍珠",
+        hours: "10:00 - 21:30",
+        mapQuery: "得正 靜宜北勢"
+      },
+      {
+        id: 30,
+        name: "麻古茶坊 (靜宜北勢店)",
+        meal: "dinner",
+        category: "鮮果特調手搖",
+        priceRange: "$40 - $90",
+        priceLevel: "$",
+        location: "沙鹿區北勢東路 · 步行 4 分鐘",
+        signature: "楊枝甘露、芝芝葡萄果粒、翡翠柳橙、高山金萱無糖",
+        hours: "09:30 - 22:30",
+        mapQuery: "麻古茶坊 靜宜"
+      }
+    ];
+
+    /* ============================================================
+       2. 吉凶籤詩文案庫
+       ============================================================ */
+    const FORTUNE_QUOTES = [
+      { stamp: "✨ 今日大吉 · 胃口全開", quote: "今日星象預告：多吃就是福，這間絕對不踩雷！" },
+      { stamp: "🎯 命中注定 · 必吃美味", quote: "天意難違，下課直奔這家就對了！" },
+      { stamp: "🔥 靜宜狂推 · 招牌神店", quote: "沒吃過這間，別說你在北勢東路走跳過！" },
+      { stamp: "🌈 小確幸上吉 · 荷包不痛", quote: "百元左右吃飽飽，下半堂課精力充沛！" },
+      { stamp: "⚡ 直覺降臨 · 靈魂共鳴", quote: "心誠則靈，這碗端上來香氣直接逼人！" }
+    ];
+
+    /* ============================================================
+       3. 本地吃過紀錄管理 (Local Storage)
+       ============================================================ */
+    const STORAGE_KEY_HISTORY = "pu_food_recent_history";
+
+    function getHistoryList() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY_HISTORY);
+        return raw ? JSON.parse(raw) : [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveHistoryList(list) {
+      try {
+        localStorage.setItem(STORAGE_KEY_HISTORY, JSON.stringify(list));
+      } catch (e) {}
+      updateHistoryBadge();
+    }
+
+    function addStoreToHistory(store) {
+      const list = getHistoryList();
+      // 加入最新吃過紀錄
+      const newEntry = {
+        id: Date.now(),
+        storeId: store.id,
+        storeName: store.name,
+        meal: store.meal,
+        signature: store.signature,
+        timestamp: Date.now()
+      };
+      // 插入最前面
+      list.unshift(newEntry);
+      // 保留最近 30 筆
+      if (list.length > 30) list.pop();
+      saveHistoryList(list);
+      showToast(`已成功記錄「${store.name}」到吃過足跡！`);
+    }
+
+    function removeHistoryItem(id) {
+      let list = getHistoryList();
+      list = list.filter(item => item.id !== id);
+      saveHistoryList(list);
+      renderHistoryModal();
+    }
+
+    function clearAllHistory() {
+      if (confirm("確定要清空所有吃過的美食紀錄嗎？")) {
+        localStorage.removeItem(STORAGE_KEY_HISTORY);
+        updateHistoryBadge();
+        renderHistoryModal();
+        showToast("已清空吃過紀錄！");
+      }
+    }
+
+    function updateHistoryBadge() {
+      const list = getHistoryList();
+      const badge = document.getElementById("historyCountBadge");
+      if (badge) badge.textContent = list.length;
+    }
+
+    function formatTimeAgo(timestamp) {
+      const diffSec = Math.floor((Date.now() - timestamp) / 1000);
+      if (diffSec < 60) return "剛剛";
+      if (diffSec < 3600) return `${Math.floor(diffSec / 60)} 分鐘前`;
+      if (diffSec < 86400) return `${Math.floor(diffSec / 3600)} 小時前`;
+      const date = new Date(timestamp);
+      return `${date.getMonth() + 1}/${date.getDate()} ${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
+    }
+
+    /* ============================================================
+       4. 狀態與 DOM 元素快取
+       ============================================================ */
+    let currentFilterTime = "all";
+    let isDrawing = false;
+    let currentDrawnStore = null;
+
+    // DOM 元素
+    const totalStoresCountEl = document.getElementById("totalStoresCount");
+    const currentPoolCountEl = document.getElementById("currentPoolCount");
+    const storeGridEl = document.getElementById("storeGrid");
+    const searchInputEl = document.getElementById("searchInput");
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const chkAvoidRecent = document.getElementById("chkAvoidRecent");
+
+    // 抽籤元素
+    const cylinderBoxEl = document.getElementById("cylinderBox");
+    const flyingStickEl = document.getElementById("flyingStick");
+    const btnDrawFortune = document.getElementById("btnDrawFortune");
+
+    // 籤卡 Modal
+    const fortuneModalEl = document.getElementById("fortuneModal");
+    const modalCloseBtn = document.getElementById("modalCloseBtn");
+    const modalLuckStamp = document.getElementById("modalLuckStamp");
+    const modalLuckQuote = document.getElementById("modalLuckQuote");
+    const modalTimeBadge = document.getElementById("modalTimeBadge");
+    const modalCategoryBadge = document.getElementById("modalCategoryBadge");
+    const modalPriceBadge = document.getElementById("modalPriceBadge");
+    const modalStoreName = document.getElementById("modalStoreName");
+    const modalSignature = document.getElementById("modalSignature");
+    const modalLocation = document.getElementById("modalLocation");
+    const modalHoursPrice = document.getElementById("modalHoursPrice");
+    const modalMapLink = document.getElementById("modalMapLink");
+    const modalRedrawBtn = document.getElementById("modalRedrawBtn");
+    const btnRecordEatModal = document.getElementById("btnRecordEatModal");
+
+    // 歷史紀錄 Modal
+    const historyModalEl = document.getElementById("historyModal");
+    const btnOpenHistory = document.getElementById("btnOpenHistory");
+    const historyCloseBtn = document.getElementById("historyCloseBtn");
+    const historyDoneBtn = document.getElementById("historyDoneBtn");
+    const btnClearHistory = document.getElementById("btnClearHistory");
+    const historyListContainer = document.getElementById("historyListContainer");
+
+    // 吐司
+    const toastEl = document.getElementById("toastMsg");
+    const toastTextEl = document.getElementById("toastText");
+    let toastTimer = null;
+
+    function showToast(msg) {
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTextEl.textContent = msg;
+      toastEl.classList.add("show");
+      toastTimer = setTimeout(() => {
+        toastEl.classList.remove("show");
+      }, 2500);
+    }
+
+    /* ============================================================
+       5. 音效合成器 (Web Audio API)
+       ============================================================ */
+    function playChimeSound() {
+      try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContext) return;
+        const ctx = new AudioContext();
+
+        const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+        notes.forEach((freq, idx) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+
+          osc.type = "triangle";
+          osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.1);
+
+          gain.gain.setValueAtTime(0.15, ctx.currentTime + idx * 0.1);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + idx * 0.1 + 0.5);
+
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+
+          osc.start(ctx.currentTime + idx * 0.1);
+          osc.stop(ctx.currentTime + idx * 0.1 + 0.6);
+        });
+      } catch (e) {}
+    }
+
+    /* ============================================================
+       6. 五彩碎屑 (Confetti Canvas)
+       ============================================================ */
+    const canvas = document.getElementById("confettiCanvas");
+    const ctx = canvas.getContext("2d");
+    let confettiParticles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    function triggerConfetti() {
+      confettiParticles = [];
+      const colors = ["#FF5E3A", "#FFAA00", "#10B981", "#3B82F6", "#EC4899", "#8B5CF6"];
+      for (let i = 0; i < 90; i++) {
+        confettiParticles.push({
+          x: canvas.width / 2,
+          y: canvas.height / 2 + 50,
+          w: Math.random() * 9 + 5,
+          h: Math.random() * 5 + 3,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          vx: (Math.random() - 0.5) * 16,
+          vy: (Math.random() - 0.8) * 18,
+          rotation: Math.random() * 360,
+          vRot: (Math.random() - 0.5) * 10,
+          life: 120
+        });
+      }
+      requestAnimationFrame(renderConfetti);
+    }
+
+    function renderConfetti() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      let aliveCount = 0;
+
+      confettiParticles.forEach(p => {
+        if (p.life > 0) {
+          aliveCount++;
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.35;
+          p.vx *= 0.98;
+          p.rotation += p.vRot;
+          p.life--;
+
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate((p.rotation * Math.PI) / 180);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+          ctx.restore();
+        }
+      });
+
+      if (aliveCount > 0) {
+        requestAnimationFrame(renderConfetti);
+      } else {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    }
+
+    /* ============================================================
+       7. 篩選與渲染
+       ============================================================ */
+    function getFilteredStores() {
+      const keyword = searchInputEl.value.trim().toLowerCase();
+      return FOOD_DATABASE.filter(store => {
+        const matchesTime = (currentFilterTime === "all") || (store.meal === currentFilterTime);
+        const matchesKeyword = !keyword || 
+          store.name.toLowerCase().includes(keyword) ||
+          store.signature.toLowerCase().includes(keyword) ||
+          store.category.toLowerCase().includes(keyword) ||
+          store.location.toLowerCase().includes(keyword);
+        return matchesTime && matchesKeyword;
+      });
+    }
+
+    function getCandidatesForDraw() {
+      let candidates = getFilteredStores();
+
+      // 若啟用了「避開最近吃過店家」
+      if (chkAvoidRecent && chkAvoidRecent.checked) {
+        const history = getHistoryList();
+        // 抓最近 3 次吃過的店家 ID
+        const recentStoreIds = history.slice(0, 3).map(h => h.storeId);
+        const filtered = candidates.filter(s => !recentStoreIds.includes(s.id));
+        // 如果避開後還有候選店家，就用過濾後的，否則退回全部候選
+        if (filtered.length > 0) {
+          return filtered;
+        }
+      }
+      return candidates;
+    }
+
+    function getMealLabel(meal) {
+      if (meal === "breakfast") return "🍳 早餐";
+      if (meal === "lunch") return "🍱 午餐";
+      return "🌙 晚餐/宵夜";
+    }
+
+    function renderStoresList() {
+      const filtered = getFilteredStores();
+      const drawCandidates = getCandidatesForDraw();
+      currentPoolCountEl.textContent = drawCandidates.length;
+
+      if (filtered.length === 0) {
+        storeGridEl.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-state-icon">🥢</div>
+            <h3>找不到符合條件的美食</h3>
+            <p style="margin-top: 6px;">試著清除搜尋關鍵字，或切換至其他時段看看吧！</p>
+          </div>
+        `;
+        return;
+      }
+
+      storeGridEl.innerHTML = filtered.map(store => `
+        <article class="store-card">
+          <div>
+            <div class="store-card-header">
+              <span class="badge-pill badge-time">${getMealLabel(store.meal)}</span>
+              <span class="badge-pill badge-cat">${store.category}</span>
+            </div>
+            <h3 class="store-name">${store.name}</h3>
+            <div class="store-loc">
+              <span>📍</span> ${store.location}
+            </div>
+            <div class="signature-box">
+              ⭐ 招牌：${store.signature}
+            </div>
+          </div>
+          <div class="store-card-footer">
+            <div class="price-text">均消 ${store.priceRange}</div>
+            <div class="card-footer-btns">
+              <button class="btn-quick-eat" data-store-id="${store.id}" title="將此店記到最近吃過">
+                <span>✓</span> 記吃過
+              </button>
+              <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(store.mapQuery)}" 
+                 target="_blank" rel="noopener noreferrer" class="btn-card-map" title="前往 Google 地圖導航">
+                <span>🗺️</span> 導航
+              </a>
+            </div>
+          </div>
+        </article>
+      `).join("");
+
+      // 綁定「記吃過」按鈕
+      document.querySelectorAll(".btn-quick-eat").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          const storeId = parseInt(btn.getAttribute("data-store-id"));
+          const target = FOOD_DATABASE.find(s => s.id === storeId);
+          if (target) {
+            addStoreToHistory(target);
+          }
+        });
+      });
+    }
+
+    /* ============================================================
+       8. 抽籤核心邏輯 (飛籤展開動畫)
+       ============================================================ */
+    function triggerDrawSequence() {
+      if (isDrawing) return;
+
+      const candidates = getCandidatesForDraw();
+      if (candidates.length === 0) {
+        alert("目前的條件下沒有店家可抽，請放寬篩選或清除搜尋關鍵字！");
+        return;
+      }
+
+      isDrawing = true;
+      btnDrawFortune.disabled = true;
+      btnDrawFortune.innerHTML = `<span>⏳</span> 抽籤中...`;
+
+      // 1. 籤筒晃動
+      cylinderBoxEl.classList.add("is-shaking");
+
+      // 2. 隨機選出店家與籤詩
+      const pickedStore = candidates[Math.floor(Math.random() * candidates.length)];
+      const pickedQuote = FORTUNE_QUOTES[Math.floor(Math.random() * FORTUNE_QUOTES.length)];
+      currentDrawnStore = pickedStore;
+
+      // 3. 700ms 後紙籤拔起飛出
+      setTimeout(() => {
+        flyingStickEl.classList.remove("is-flying");
+        void flyingStickEl.offsetWidth;
+        flyingStickEl.classList.add("is-flying");
+      }, 700);
+
+      // 4. 1500ms 展開幸運籤卡
+      setTimeout(() => {
+        cylinderBoxEl.classList.remove("is-shaking");
+        flyingStickEl.classList.remove("is-flying");
+        
+        displayFortuneModal(pickedStore, pickedQuote);
+        triggerConfetti();
+        playChimeSound();
+
+        isDrawing = false;
+        btnDrawFortune.disabled = false;
+        btnDrawFortune.innerHTML = `<span>🎲</span> 抽出今日美食`;
+      }, 1500);
+    }
+
+    function displayFortuneModal(store, quote) {
+      modalLuckStamp.textContent = quote.stamp;
+      modalLuckQuote.textContent = quote.quote;
+      modalTimeBadge.textContent = getMealLabel(store.meal);
+      modalCategoryBadge.textContent = store.category;
+      modalPriceBadge.textContent = `均消 ${store.priceLevel} (${store.priceRange})`;
+      modalStoreName.textContent = store.name;
+      modalSignature.textContent = store.signature;
+      modalLocation.textContent = store.location;
+      modalHoursPrice.textContent = `營業時段：${store.hours} · 均消約 ${store.priceRange}`;
+      modalMapLink.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(store.mapQuery)}`;
+
+      fortuneModalEl.classList.add("show");
+    }
+
+    function closeModal() {
+      fortuneModalEl.classList.remove("show");
+    }
+
+    /* ============================================================
+       9. 最近吃過紀錄 Modal 渲染
+       ============================================================ */
+    function renderHistoryModal() {
+      const history = getHistoryList();
+      if (history.length === 0) {
+        historyListContainer.innerHTML = `
+          <div style="text-align: center; padding: 40px 10px; color: var(--text-muted);">
+            <div style="font-size: 2.5rem; margin-bottom: 8px;">🍽️</div>
+            <h4>目前尚無吃過紀錄</h4>
+            <p style="font-size: 0.85rem; margin-top: 6px;">抽到滿意的店家後，點擊「就決定吃這家！」即可自動記下足跡！</p>
+          </div>
+        `;
+        return;
+      }
+
+      historyListContainer.innerHTML = `
+        <div class="history-list">
+          ${history.map(item => `
+            <div class="history-item">
+              <div class="history-item-left">
+                <div class="history-item-store">
+                  <span>${item.storeName}</span>
+                  <span class="badge-pill badge-time" style="font-size: 0.7rem; padding: 2px 6px;">${getMealLabel(item.meal)}</span>
+                </div>
+                <div class="history-item-meta">
+                  ⭐ 招牌：${item.signature} · <span style="color: var(--primary);">${formatTimeAgo(item.timestamp)}</span>
+                </div>
+              </div>
+              <button class="history-item-delete" onclick="removeHistoryItem(${item.id})" title="刪除此紀錄">
+                🗑️
+              </button>
+            </div>
+          `).join("")}
+        </div>
+      `;
+    }
+
+    function openHistoryModal() {
+      renderHistoryModal();
+      historyModalEl.classList.add("show");
+    }
+
+    function closeHistoryModal() {
+      historyModalEl.classList.remove("show");
+    }
+
+    /* ============================================================
+       10. 事件監聽綁定
+       ============================================================ */
+    filterButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        filterButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentFilterTime = btn.getAttribute("data-time");
+        renderStoresList();
+      });
+    });
+
+    searchInputEl.addEventListener("input", renderStoresList);
+    if (chkAvoidRecent) chkAvoidRecent.addEventListener("change", renderStoresList);
+
+    btnDrawFortune.addEventListener("click", triggerDrawSequence);
+    cylinderBoxEl.addEventListener("click", triggerDrawSequence);
+
+    modalCloseBtn.addEventListener("click", closeModal);
+    fortuneModalEl.addEventListener("click", (e) => {
+      if (e.target === fortuneModalEl) closeModal();
+    });
+
+    modalRedrawBtn.addEventListener("click", () => {
+      closeModal();
+      setTimeout(triggerDrawSequence, 300);
+    });
+
+    // 籤卡 Modal 內的「就決定吃這家！」按鈕
+    btnRecordEatModal.addEventListener("click", () => {
+      if (currentDrawnStore) {
+        addStoreToHistory(currentDrawnStore);
+        closeModal();
+      }
+    });
+
+    // 歷史紀錄彈窗事件
+    btnOpenHistory.addEventListener("click", openHistoryModal);
+    historyCloseBtn.addEventListener("click", closeHistoryModal);
+    historyDoneBtn.addEventListener("click", closeHistoryModal);
+    historyModalEl.addEventListener("click", (e) => {
+      if (e.target === historyModalEl) closeHistoryModal();
+    });
+    btnClearHistory.addEventListener("click", clearAllHistory);
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeModal();
+        closeHistoryModal();
+      }
+    });
+
+    // 初始化載入
+    totalStoresCountEl.textContent = FOOD_DATABASE.length;
+    updateHistoryBadge();
+    renderStoresList();
+  </script>
+</body>
+</html>
